@@ -1,0 +1,1 @@
+recursive-include simgame/ *.py *.txt py.typed MANIFEST.in
