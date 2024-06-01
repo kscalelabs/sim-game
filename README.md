@@ -1,4 +1,4 @@
-# simgame
+# sim-game
 
 ## Getting Started
 
@@ -9,3 +9,7 @@
 git clone git@github.com:kscalelabs/sim-game.git
 cd sim-game && pip install -e '.[dev]'
 ```
+
+### Notes about installing ManiSkill
+
+Ben tried installing ManiSkill to a cluster and found it very difficult. Somehow Allen installed it without any problems though. If you run into issues, you can ask Allen to work his magic.
