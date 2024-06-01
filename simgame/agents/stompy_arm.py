@@ -28,25 +28,25 @@ class StompyArm(BaseAgent):
     urdf_path = f"{get_model_dir()}/stompy_arm/left_arm.urdf"
 
     urdf_config = {
-        "_materials": {
-            "gripper": {
-                "static_friction": 2.0,
-                "dynamic_friction": 2.0,
-                "restitution": 0.0,
-            },
-        },
-        "link": {
-            "link_right_arm_1_hand_1_gripper_1": {
-                "material": "gripper",
-                "patch_radius": 0.1,
-                "min_patch_radius": 0.1,
-            },
-            "link_right_arm_1_hand_1_gripper_2": {
-                "material": "gripper",
-                "patch_radius": 0.1,
-                "min_patch_radius": 0.1,
-            },
-        },
+        # "_materials": {
+        #     "gripper": {
+        #         "static_friction": 2.0,
+        #         "dynamic_friction": 2.0,
+        #         "restitution": 0.0,
+        #     },
+        # },
+        # "link": {
+        #     "link_right_arm_1_hand_1_gripper_1": {
+        #         "material": "gripper",
+        #         "patch_radius": 0.1,
+        #         "min_patch_radius": 0.1,
+        #     },
+        #     "link_right_arm_1_hand_1_gripper_2": {
+        #         "material": "gripper",
+        #         "patch_radius": 0.1,
+        #         "min_patch_radius": 0.1,
+        #     },
+        # },
     }
 
     startpos = [0.0, 0.0, 0.0]
@@ -56,7 +56,13 @@ class StompyArm(BaseAgent):
     keyframes = {
         "rest": Keyframe(
             pose=sapien.Pose(p=startpos, q=startorn),
-            qpos=np.array([1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0]),
+            qpos=np.array(
+                [
+                    [1.0, 1.0, 1.0],
+                    [0.0, 0.0, 1.0],
+                    [0.0, 0.0, 0.0],
+                ]
+            ).flatten(),
         )
     }
 
@@ -77,9 +83,13 @@ class StompyArm(BaseAgent):
 
     ee_link_name = "link_rmd_x4_24_mock_6_inner_rmd_x4_24_1"
 
-    arm_stiffness = 1e3
-    arm_damping = 1e2
-    arm_force_limit = 100
+    # arm_stiffness = 1e3
+    # arm_damping = 1e2
+    # arm_force_limit = 100
+
+    arm_stiffness = 1
+    arm_damping = 1
+    arm_force_limit = 1
 
     gripper_stiffness = 1e3
     gripper_damping = 1e2
