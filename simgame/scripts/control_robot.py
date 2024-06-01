@@ -5,8 +5,9 @@ import logging
 
 import gymnasium as gym
 import numpy as np
-from mani_skill.envs.sapien_env import BaseEnv
 from mani_skill.utils.wrappers import RecordEpisode
+
+from simgame.envs.stompy_arm import StompyPushCubeEnv
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +18,7 @@ def parse_args() -> argparse.Namespace:
         "-e",
         "--env-id",
         type=str,
-        default="PushCube-v1",
+        default="StompyPushCube-v1",
         help="The environment ID of the task you want to simulate",
     )
     parser.add_argument("-o", "--obs-mode", type=str, default="none")
@@ -73,7 +74,7 @@ def main() -> None:
     if args.seed is not None:
         np.random.seed(args.seed)
 
-    env: BaseEnv = gym.make(
+    env: StompyPushCubeEnv = gym.make(
         args.env_id,
         obs_mode=args.obs_mode,
         reward_mode=args.reward_mode,
@@ -129,4 +130,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    # python -m simgame.scripts.control_robot
     main()
