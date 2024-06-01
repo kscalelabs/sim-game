@@ -5,9 +5,9 @@ from copy import deepcopy
 import numpy as np
 import sapien
 from mani_skill.agents.base_agent import BaseAgent, Keyframe
-from mani_skill.agents.controllers.pd_ee_pose import PDEEPoseControllerConfig
 from mani_skill.agents.registration import register_agent
 
+from simgame.agents.controllers.keyboard import KeyboardControllerConfig
 from simgame.config import get_model_dir
 
 
@@ -52,12 +52,13 @@ class StompyArm(BaseAgent):
     startpos = [0.0, 0.0, 0.0]
     startorn = [0.0, 0.0, 0.0, 1.0]
     startrpy = [0.0, 0.0, 0.0]
-    keyframes = dict(
-        rest=Keyframe(
+
+    keyframes = {
+        "rest": Keyframe(
             pose=sapien.Pose(p=startpos, q=startorn),
-            qpos=np.array([1.0, 1.0, 1.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0]),
+            qpos=np.array([1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0]),
         )
-    )
+    }
 
     # fix_root_link = True
     # balance_passive_force = True
@@ -86,21 +87,10 @@ class StompyArm(BaseAgent):
 
     @property
     def _controller_configs(self) -> dict:
-        arm_pd_ee_delta_pose = PDEEPoseControllerConfig(
-            joint_names=self.arm_joint_names,
-            pos_lower=-0.1,
-            pos_upper=0.1,
-            rot_lower=-0.1,
-            rot_upper=0.1,
-            stiffness=self.arm_stiffness,
-            damping=self.arm_damping,
-            force_limit=self.arm_force_limit,
-            ee_link=self.ee_link_name,
-            urdf_path=self.urdf_path,
-        )
-        arm_pd_ee_target_delta_pose = deepcopy(arm_pd_ee_delta_pose)
-        arm_pd_ee_target_delta_pose.use_target = True
-        controller_configs = {"pd_ee_delta_pose": {"arm": arm_pd_ee_delta_pose}}
-
-        # Make a deepcopy in case users modify any config
-        return deepcopy_dict(controller_configs)
+        return {
+            "keyboard": KeyboardControllerConfig(
+                [x.name for x in self.robot.active_joints],
+                lower=-0.1,
+                upper=0.1,
+            ),
+        }

@@ -1,7 +1,7 @@
 """Defines some common accessor functions."""
 
-from pathlib import Path
 import os
+from pathlib import Path
 
 
 def get_model_dir() -> Path:

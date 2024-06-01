@@ -103,11 +103,16 @@ def main() -> None:
         viewer.paused = args.pause
         env.render()
 
+    # action_1 = np.array([-0.912, -0.639, 0.154, 0.55, 0.693, 1.0], dtype=np.float32)
+    # action_2 = np.array([-0.912, -0.639, 0.124, 0.55, 0.693, 1.0], dtype=np.float32)
+    # action_1_flag = False
+
     while True:
         action = env.action_space.sample()
 
-        # TODO: Detect if some key is pressed, and if so, take an action based
-        # on the key press.
+        # Oscillates between two actions.
+        # action, action_1_flag = action_1 if action_1_flag else action_2, not action_1_flag
+        # action = action_1
 
         obs, reward, terminated, truncated, info = env.step(action)
 
