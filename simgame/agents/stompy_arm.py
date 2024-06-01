@@ -64,22 +64,17 @@ class StompyArm(BaseAgent):
     # load_multiple_collisions = True
 
     arm_joint_names = [
-        "joint_x8_1_dof_x8",
-        "joint_x8_2_dof_x8",
-        "joint_x6_1_dof_x6",
-        "joint_x6_2_dof_x6",
-        "joint_x4_1_dof_x4",
-        "joint_hand_right_1_x4_3_dof_x4",
-        "joint_hand_right_1_x4_1_dof_x4",
-        "joint_hand_right_1_x4_2_dof_x4",
+        "joint_rmd_x8_90_mock_1_dof_x8",
+        "joint_rmd_x8_90_mock_2_dof_x8",
+        "joint_rmd_x4_24_mock_1_dof_x4",
+        "joint_rmd_x4_24_mock_2_dof_x4",
+        "joint_rmd_x4_24_mock_3_dof_x4",
+        "joint_rmd_x4_24_mock_4_dof_x4",
+        "joint_rmd_x4_24_mock_5_dof_x4",
+        "joint_rmd_x4_24_mock_6_dof_x4",
     ]
 
-    gripper_joint_names = [
-        "joint_hand_right_1_slider_3",
-        "joint_hand_right_1_slider_1",
-    ]
-
-    ee_link_name = "link_x6_1_outer_x6_1"
+    ee_link_name = "link_rmd_x4_24_mock_6_inner_rmd_x4_24_1"
 
     arm_stiffness = 1e3
     arm_damping = 1e2

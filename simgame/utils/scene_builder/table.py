@@ -31,7 +31,7 @@ class StompyTableSceneBuilder(TableSceneBuilder):
             )
             qpos = self.env._episode_rng.normal(0, self.robot_init_qpos_noise, (b, len(qpos))) + qpos
             qpos[:, -2:] = 0.04
-            self.env.agent.robot.set_pose(sapien.Pose(p=[-0.3, 0, 0], q=euler2quat(-np.pi, 0, -np.pi / 2)))
+            self.env.agent.robot.set_pose(sapien.Pose(p=[-0.3, 0, 0], q=euler2quat(-3 * np.pi / 2, 0, -np.pi / 2)))
 
         else:
             raise KeyError(f"Unexpected robot UID: {self.env.robot_uids}")
