@@ -5,9 +5,10 @@ from copy import deepcopy
 import numpy as np
 import sapien
 from mani_skill.agents.base_agent import BaseAgent, Keyframe
+from mani_skill.agents.controllers import PDJointVelControllerConfig
 from mani_skill.agents.registration import register_agent
 
-from simgame.agents.controllers.keyboard import KeyboardControllerConfig
+# from simgame.agents.controllers.keyboard import KeyboardControllerConfig
 from simgame.config import get_model_dir
 
 
@@ -98,9 +99,11 @@ class StompyArm(BaseAgent):
     @property
     def _controller_configs(self) -> dict:
         return {
-            "keyboard": KeyboardControllerConfig(
-                [x.name for x in self.robot.active_joints],
-                lower=-0.1,
-                upper=0.1,
+            "pd_joint_vel": PDJointVelControllerConfig(
+                self.arm_joint_names,
+                -1.0,
+                1.0,
+                self.arm_damping,  # this might need to be tuned separately
+                self.arm_force_limit,
             ),
         }
