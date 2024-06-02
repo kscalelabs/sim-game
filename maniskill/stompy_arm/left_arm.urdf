@@ -1,0 +1,716 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="left_arm">
+  <link name="link_arm_part_1_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_1_1.stl" />
+      </geometry>
+      <material name="link_arm_part_1_1_material">
+        <color rgba="0.64705882 0.64705882 0.64705882 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_1_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.051926305" />
+      <inertia ixx="5.304865e-05" iyy="9.0959358e-05" izz="4.0098649e-05" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="0 0 0" rpy="1.5707963 0 1.5707963" />
+    </inertial>
+  </link>
+  <link name="link_rmd_x8_90_mock_1_outer_rmd_x8_90_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x8_90_mock_1_outer_rmd_x8_90_1.stl" />
+      </geometry>
+      <material name="link_rmd_x8_90_mock_1_outer_rmd_x8_90_1_material">
+        <color rgba="0.49803922 0.49803922 0.49803922 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x8_90_mock_1_outer_rmd_x8_90_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.49985879" />
+      <inertia ixx="0.00047947229" iyy="0.00046228391" izz="0.00077483346" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="0.018560146 0.044808157 -0.020723263" rpy="0 1.5707963 0" />
+    </inertial>
+  </link>
+  <joint name="joint_fastened_2" type="fixed">
+    <origin xyz="-0.018560146 0.0079969682 -0.044808157" rpy="1.5707963 0 0" />
+    <parent link="link_arm_part_1_1" />
+    <child link="link_rmd_x8_90_mock_1_outer_rmd_x8_90_1" />
+  </joint>
+  <link name="link_rmd_x8_90_mock_1_inner_rmd_x8_90_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x8_90_mock_1_inner_rmd_x8_90_1.stl" />
+      </geometry>
+      <material name="link_rmd_x8_90_mock_1_inner_rmd_x8_90_1_material">
+        <color rgba="0.98039216 0.71372549 0.0039215686 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x8_90_mock_1_inner_rmd_x8_90_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.35017331" />
+      <inertia ixx="0.0001276062" iyy="0.0001276062" izz="0.00022632308" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="0 0 -0.011025079" rpy="3.1415927 0 0" />
+    </inertial>
+  </link>
+  <joint name="joint_rmd_x8_90_mock_1_dof_x8" type="revolute">
+    <origin xyz="0.018560146 0.044808157 -0.0275" rpy="0 0 0" />
+    <parent link="link_rmd_x8_90_mock_1_outer_rmd_x8_90_1" />
+    <child link="link_rmd_x8_90_mock_1_inner_rmd_x8_90_1" />
+    <limit effort="6" velocity="5" lower="-3.1415927" upper="3.1415927" />
+    <axis xyz="0 0 -1" />
+  </joint>
+  <link name="link_arm_part_2_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_2_1.stl" />
+      </geometry>
+      <material name="link_arm_part_2_1_material">
+        <color rgba="0.64705882 0.64705882 0.64705882 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_2_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.11507194" />
+      <inertia ixx="0.00021181865" iyy="0.00036526157" izz="0.00023533121" ixy="0" ixz="0" iyz="1.4908489e-05" />
+      <origin xyz="-0.021650622 0.022344756 -0.062468985" rpy="0 3.199233e-06 -2.8573137e-06" />
+    </inertial>
+  </link>
+  <joint name="joint_fastened_3" type="fixed">
+    <origin xyz="0 -0.025 -0.023" rpy="0 0 -1.0471976" />
+    <parent link="link_rmd_x8_90_mock_1_inner_rmd_x8_90_1" />
+    <child link="link_arm_part_2_1" />
+  </joint>
+  <link name="link_rmd_x8_90_mock_2_outer_rmd_x8_90_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x8_90_mock_2_outer_rmd_x8_90_1.stl" />
+      </geometry>
+      <material name="link_rmd_x8_90_mock_2_outer_rmd_x8_90_1_material">
+        <color rgba="0.49803922 0.49803922 0.49803922 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x8_90_mock_2_outer_rmd_x8_90_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.49985879" />
+      <inertia ixx="0.00047947229" iyy="0.00046228391" izz="0.00077483346" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="-0.018560146 -0.044808157 -0.020723263" rpy="0 1.5707963 0" />
+    </inertial>
+  </link>
+  <joint name="joint_fastened_4" type="fixed">
+    <origin xyz="-0.066458792 0.03725 -0.092060146" rpy="-1.5707963 1.5707963 0" />
+    <parent link="link_arm_part_2_1" />
+    <child link="link_rmd_x8_90_mock_2_outer_rmd_x8_90_1" />
+  </joint>
+  <link name="link_rmd_x8_90_mock_2_inner_rmd_x8_90_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x8_90_mock_2_inner_rmd_x8_90_1.stl" />
+      </geometry>
+      <material name="link_rmd_x8_90_mock_2_inner_rmd_x8_90_1_material">
+        <color rgba="0.98039216 0.71372549 0.0039215686 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x8_90_mock_2_inner_rmd_x8_90_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.35017331" />
+      <inertia ixx="0.0001276062" iyy="0.0001276062" izz="0.00022632308" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="0 0 -0.011025079" rpy="3.1415927 0 0" />
+    </inertial>
+  </link>
+  <joint name="joint_rmd_x8_90_mock_2_dof_x8" type="revolute">
+    <origin xyz="-0.018560146 -0.044808157 -0.0275" rpy="0 0 0" />
+    <parent link="link_rmd_x8_90_mock_2_outer_rmd_x8_90_1" />
+    <child link="link_rmd_x8_90_mock_2_inner_rmd_x8_90_1" />
+    <limit effort="6" velocity="5" lower="-3.1415927" upper="3.1415927" />
+    <axis xyz="0 0 -1" />
+  </joint>
+  <link name="link_arm_part_3_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_3_1.stl" />
+      </geometry>
+      <material name="link_arm_part_3_1_material">
+        <color rgba="0.91764706 0.91764706 0.91764706 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_3_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.094416725" />
+      <inertia ixx="0.00025379895" iyy="4.8390894e-05" izz="0.00028834723" ixy="0" ixz="0" iyz="-7.3616965e-06" />
+      <origin xyz="-0.01250012 0.079976845 -0.01066852" rpy="3.1109569 -0.030635747 0" />
+    </inertial>
+  </link>
+  <joint name="joint_fastened_5" type="fixed">
+    <origin xyz="-0.021650635 0.0125 -0.023" rpy="0 0 -2.6179939" />
+    <parent link="link_rmd_x8_90_mock_2_inner_rmd_x8_90_1" />
+    <child link="link_arm_part_3_1" />
+  </joint>
+  <link name="link_rmd_x4_24_mock_1_outer_rmd_x4_24_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_1_outer_rmd_x4_24_1.stl" />
+      </geometry>
+      <material name="link_rmd_x4_24_mock_1_outer_rmd_x4_24_1_material">
+        <color rgba="0.91764706 0.91764706 0.91764706 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_1_outer_rmd_x4_24_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.23995036" />
+      <inertia ixx="0.00010773939" iyy="0.00010552777" izz="0.0001024819" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="-0.0245 0 -0.030478263" rpy="0 0 3.1415927" />
+    </inertial>
+  </link>
+  <joint name="joint_fastened_6" type="fixed">
+    <origin xyz="0.012 0.15065064 0.02625" rpy="-1.5707963 0 0" />
+    <parent link="link_arm_part_3_1" />
+    <child link="link_rmd_x4_24_mock_1_outer_rmd_x4_24_1" />
+  </joint>
+  <link name="link_arm_part_4_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_4_1.stl" />
+      </geometry>
+      <material name="link_arm_part_4_1_material">
+        <color rgba="0.76862745 0.88627451 0.95294118 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_4_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.069584086" />
+      <inertia ixx="0.00018808574" iyy="0.00021810346" izz="4.1952167e-05" ixy="0" ixz="0" iyz="-1.3137698e-05" />
+      <origin xyz="-0.012250093 0.026114496 0.064554016" rpy="-2.7811686 1.5707913 1.8571843" />
+    </inertial>
+  </link>
+  <joint name="joint_fastened_7" type="fixed">
+    <origin xyz="-0.01225 -0.021217622 0" rpy="3.1415927 0 0" />
+    <parent link="link_rmd_x4_24_mock_1_outer_rmd_x4_24_1" />
+    <child link="link_arm_part_4_1" />
+  </joint>
+  <link name="link_rmd_x4_24_mock_1_inner_rmd_x4_24_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_1_inner_rmd_x4_24_1.stl" />
+      </geometry>
+      <material name="link_rmd_x4_24_mock_1_inner_rmd_x4_24_1_material">
+        <color rgba="0.76862745 0.88627451 0.95294118 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_1_inner_rmd_x4_24_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.14016004" />
+      <inertia ixx="1.7993604e-05" iyy="1.7993604e-05" izz="2.1433066e-05" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="0 0 -0.012407025" rpy="3.1415927 0 0" />
+    </inertial>
+  </link>
+  <joint name="joint_rmd_x4_24_mock_1_dof_x4" type="revolute">
+    <origin xyz="-0.0245 0 -0.02" rpy="3.1415927 0 0" />
+    <parent link="link_rmd_x4_24_mock_1_outer_rmd_x4_24_1" />
+    <child link="link_rmd_x4_24_mock_1_inner_rmd_x4_24_1" />
+    <limit effort="1.5" velocity="5" lower="-3.1415927" upper="3.1415927" />
+    <axis xyz="0 0 -1" />
+  </joint>
+  <link name="link_arm_part_5_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_5_1.stl" />
+      </geometry>
+      <material name="link_arm_part_5_1_material">
+        <color rgba="0.23137255 0.38039216 0.70588235 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_5_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.17859726" />
+      <inertia ixx="0.00073413377" iyy="0.00073677819" izz="0.00016738789" ixy="0" ixz="0" iyz="2.238403e-05" />
+      <origin xyz="0.006549429 -0.0099936099 -0.11259806" rpy="0.22507456 -1.5707048 1.3064902" />
+    </inertial>
+  </link>
+  <joint name="joint_fastened_8" type="fixed">
+    <origin xyz="0.0096234197 0.0087401255 -0.025" rpy="0 0 -1.3613568" />
+    <parent link="link_rmd_x4_24_mock_1_inner_rmd_x4_24_1" />
+    <child link="link_arm_part_5_1" />
+  </joint>
+  <link name="link_rmd_x4_24_mock_2_outer_rmd_x4_24_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_2_outer_rmd_x4_24_1.stl" />
+      </geometry>
+      <material name="link_rmd_x4_24_mock_2_outer_rmd_x4_24_1_material">
+        <color rgba="0.91764706 0.91764706 0.91764706 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_2_outer_rmd_x4_24_1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.23995036" />
+      <inertia ixx="0.00010773939" iyy="0.00010552777" izz="0.0001024819" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="0.0245 0 -0.030478263" rpy="0 0 3.1415927" />
+    </inertial>
+  </link>
+  <joint name="joint_fastened_9" type="fixed">
+    <origin xyz="0.031048311 -0.039480299 -0.2085" rpy="-1.5707963 0 -3.1415927" />
+    <parent link="link_arm_part_5_1" />
+    <child link="link_rmd_x4_24_mock_2_outer_rmd_x4_24_1" />
+  </joint>
+  <link name="link_rmd_x4_24_mock_2_inner_rmd_x4_24_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_2_inner_rmd_x4_24_1.stl" />
+      </geometry>
+      <material name="link_rmd_x4_24_mock_2_inner_rmd_x4_24_1_material">
+        <color rgba="0.76862745 0.88627451 0.95294118 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_2_inner_rmd_x4_24_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.14016004" />
+      <inertia ixx="1.7993604e-05" iyy="1.7993604e-05" izz="2.1433066e-05" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="0 0 -0.012407025" rpy="3.1415927 0 0" />
+    </inertial>
+  </link>
+  <joint name="joint_rmd_x4_24_mock_2_dof_x4" type="revolute">
+    <origin xyz="0.0245 0 -0.02" rpy="3.1415927 0 0" />
+    <parent link="link_rmd_x4_24_mock_2_outer_rmd_x4_24_1" />
+    <child link="link_rmd_x4_24_mock_2_inner_rmd_x4_24_1" />
+    <limit effort="1.5" velocity="5" lower="-3.1415927" upper="3.1415927" />
+    <axis xyz="0 0 -1" />
+  </joint>
+  <link name="link_arm_part_6_2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_6_2.stl" />
+      </geometry>
+      <material name="link_arm_part_6_2_material">
+        <color rgba="0.23137255 0.38039216 0.70588235 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_6_2.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.055218352" />
+      <inertia ixx="0.0001112314" iyy="3.4051703e-05" izz="0.00012729032" ixy="0" ixz="0" iyz="-1.315758e-05" />
+      <origin xyz="-0.012380881 0.050674434 -0.011577324" rpy="3.0040528 0.13753981 0" />
+    </inertial>
+  </link>
+  <joint name="joint_fastened_10" type="fixed">
+    <origin xyz="-0.0096234197 -0.0087401255 -0.025" rpy="0 0 -2.0943951" />
+    <parent link="link_rmd_x4_24_mock_2_inner_rmd_x4_24_1" />
+    <child link="link_arm_part_6_2" />
+  </joint>
+  <link name="link_rmd_x4_24_mock_3_outer_rmd_x4_24_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_3_outer_rmd_x4_24_1.stl" />
+      </geometry>
+      <material name="link_rmd_x4_24_mock_3_outer_rmd_x4_24_1_material">
+        <color rgba="0.91764706 0.91764706 0.91764706 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_3_outer_rmd_x4_24_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.23995036" />
+      <inertia ixx="0.00010773939" iyy="0.00010552777" izz="0.0001024819" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="0.0245 0 -0.030478263" rpy="0 0 3.1415927" />
+    </inertial>
+  </link>
+  <joint name="joint_fastened_11" type="fixed">
+    <origin xyz="0.012119119 0.097964087 0.03325" rpy="1.5707963 0 3.1415927" />
+    <parent link="link_arm_part_6_2" />
+    <child link="link_rmd_x4_24_mock_3_outer_rmd_x4_24_1" />
+  </joint>
+  <link name="link_arm_part_7_2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_7_2.stl" />
+      </geometry>
+      <material name="link_arm_part_7_2_material">
+        <color rgba="0.91764706 0.91764706 0.91764706 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_7_2.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.054915383" />
+      <inertia ixx="0.00010038326" iyy="0.00012099188" izz="2.9395083e-05" ixy="0" ixz="0" iyz="-8.4786352e-06" />
+      <origin xyz="-0.01225 0.024673252 0.049924694" rpy="-1.4792678 0 1.6623248" />
+    </inertial>
+  </link>
+  <joint name="joint_fastened_12" type="fixed">
+    <origin xyz="0.01225 0.021217622 0" rpy="3.1415927 0 3.1415927" />
+    <parent link="link_rmd_x4_24_mock_3_outer_rmd_x4_24_1" />
+    <child link="link_arm_part_7_2" />
+  </joint>
+  <link name="link_rmd_x4_24_mock_3_inner_rmd_x4_24_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_3_inner_rmd_x4_24_1.stl" />
+      </geometry>
+      <material name="link_rmd_x4_24_mock_3_inner_rmd_x4_24_1_material">
+        <color rgba="0.76862745 0.88627451 0.95294118 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_3_inner_rmd_x4_24_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.14016004" />
+      <inertia ixx="1.7993604e-05" iyy="1.7993604e-05" izz="2.1433066e-05" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="0 0 -0.012407025" rpy="3.1415927 0 0" />
+    </inertial>
+  </link>
+  <joint name="joint_rmd_x4_24_mock_3_dof_x4" type="revolute">
+    <origin xyz="0.0245 0 -0.02" rpy="3.1415927 0 0" />
+    <parent link="link_rmd_x4_24_mock_3_outer_rmd_x4_24_1" />
+    <child link="link_rmd_x4_24_mock_3_inner_rmd_x4_24_1" />
+    <limit effort="1.5" velocity="5" lower="-3.1415927" upper="3.1415927" />
+    <axis xyz="0 0 -1" />
+  </joint>
+  <link name="link_arm_part_8_3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_8_3.stl" />
+      </geometry>
+      <material name="link_arm_part_8_3_material">
+        <color rgba="0.91764706 0.91764706 0.91764706 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_8_3.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.15500884" />
+      <inertia ixx="0.00063626034" iyy="0.00055606626" izz="0.00028813099" ixy="0" ixz="0" iyz="-0.00020005042" />
+      <origin xyz="-0.011286155 -0.067263089 -0.084135627" rpy="0.62709488 -1.5707931 1.4340604" />
+    </inertial>
+  </link>
+  <joint name="joint_fastened_13" type="fixed">
+    <origin xyz="0.012380881 -0.0039640631 -0.025" rpy="0 0 0.20943951" />
+    <parent link="link_rmd_x4_24_mock_3_inner_rmd_x4_24_1" />
+    <child link="link_arm_part_8_3" />
+  </joint>
+  <link name="link_rmd_x4_24_mock_4_outer_rmd_x4_24_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_4_outer_rmd_x4_24_1.stl" />
+      </geometry>
+      <material name="link_rmd_x4_24_mock_4_outer_rmd_x4_24_1_material">
+        <color rgba="0.91764706 0.91764706 0.91764706 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_4_outer_rmd_x4_24_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.23995036" />
+      <inertia ixx="0.00010773939" iyy="0.00010552777" izz="0.0001024819" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="0.0245 0 -0.030478263" rpy="0 0 3.1415927" />
+    </inertial>
+  </link>
+  <joint name="joint_fastened_14" type="fixed">
+    <origin xyz="0.013213846 -0.077048431 -0.1835" rpy="1.5707963 0 3.1415927" />
+    <parent link="link_arm_part_8_3" />
+    <child link="link_rmd_x4_24_mock_4_outer_rmd_x4_24_1" />
+  </joint>
+  <link name="link_rmd_x4_24_mock_4_inner_rmd_x4_24_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_4_inner_rmd_x4_24_1.stl" />
+      </geometry>
+      <material name="link_rmd_x4_24_mock_4_inner_rmd_x4_24_1_material">
+        <color rgba="0.76862745 0.88627451 0.95294118 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_4_inner_rmd_x4_24_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.14016004" />
+      <inertia ixx="1.7993604e-05" iyy="1.7993604e-05" izz="2.1433066e-05" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="0 0 -0.012407025" rpy="3.1415927 0 0" />
+    </inertial>
+  </link>
+  <joint name="joint_rmd_x4_24_mock_4_dof_x4" type="revolute">
+    <origin xyz="0.0245 0 -0.02" rpy="3.1415927 0 0" />
+    <parent link="link_rmd_x4_24_mock_4_outer_rmd_x4_24_1" />
+    <child link="link_rmd_x4_24_mock_4_inner_rmd_x4_24_1" />
+    <limit effort="1.5" velocity="5" lower="-3.1415927" upper="3.1415927" />
+    <axis xyz="0 0 -1" />
+  </joint>
+  <link name="link_arm_part_9_3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_9_3.stl" />
+      </geometry>
+      <material name="link_arm_part_9_3_material">
+        <color rgba="0.64705882 0.64705882 0.64705882 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_9_3.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.080193354" />
+      <inertia ixx="9.9506277e-05" iyy="6.0378666e-05" izz="0.00011271967" ixy="0" ixz="0" iyz="1.7664909e-05" />
+      <origin xyz="0.0027611902 0.022164075 -0.028387884" rpy="-2.8453781 -0.00021425646 2.8454989" />
+    </inertial>
+  </link>
+  <joint name="joint_fastened_15" type="fixed">
+    <origin xyz="-0.012380881 0.0039640631 -0.025" rpy="0 0 1.0471976" />
+    <parent link="link_rmd_x4_24_mock_4_inner_rmd_x4_24_1" />
+    <child link="link_arm_part_9_3" />
+  </joint>
+  <link name="link_rmd_x4_24_mock_5_outer_rmd_x4_24_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_5_outer_rmd_x4_24_1.stl" />
+      </geometry>
+      <material name="link_rmd_x4_24_mock_5_outer_rmd_x4_24_1_material">
+        <color rgba="0.91764706 0.91764706 0.91764706 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_5_outer_rmd_x4_24_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.23995036" />
+      <inertia ixx="0.00010773939" iyy="0.00010552777" izz="0.0001024819" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="-0.0245 0 -0.030478263" rpy="0 0 3.1415927" />
+    </inertial>
+  </link>
+  <joint name="joint_fastened_16" type="fixed">
+    <origin xyz="0.027257461 0.040795811 -0.0785" rpy="1.5707963 0 0" />
+    <parent link="link_arm_part_9_3" />
+    <child link="link_rmd_x4_24_mock_5_outer_rmd_x4_24_1" />
+  </joint>
+  <link name="link_rmd_x4_24_mock_5_inner_rmd_x4_24_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_5_inner_rmd_x4_24_1.stl" />
+      </geometry>
+      <material name="link_rmd_x4_24_mock_5_inner_rmd_x4_24_1_material">
+        <color rgba="0.76862745 0.88627451 0.95294118 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_5_inner_rmd_x4_24_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.14016004" />
+      <inertia ixx="1.7993604e-05" iyy="1.7993604e-05" izz="2.1433066e-05" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="0 0 -0.012407025" rpy="3.1415927 0 0" />
+    </inertial>
+  </link>
+  <joint name="joint_rmd_x4_24_mock_5_dof_x4" type="revolute">
+    <origin xyz="-0.0245 0 -0.02" rpy="3.1415927 0 0" />
+    <parent link="link_rmd_x4_24_mock_5_outer_rmd_x4_24_1" />
+    <child link="link_rmd_x4_24_mock_5_inner_rmd_x4_24_1" />
+    <limit effort="1.5" velocity="5" lower="-3.1415927" upper="3.1415927" />
+    <axis xyz="0 0 -1" />
+  </joint>
+  <link name="link_arm_part_10_2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_10_2.stl" />
+      </geometry>
+      <material name="link_arm_part_10_2_material">
+        <color rgba="0.64705882 0.64705882 0.64705882 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/arm_part_10_2.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.0234859" />
+      <inertia ixx="1.6094495e-05" iyy="6.7614966e-06" izz="1.7798674e-05" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="-0.005594283 0.0064515444 -0.020091248" rpy="0.37789371 0.158247 -0.3778939" />
+    </inertial>
+  </link>
+  <joint name="joint_fastened_17" type="fixed">
+    <origin xyz="0.012380881 -0.0039640631 -0.025" rpy="0 0 0.20943951" />
+    <parent link="link_rmd_x4_24_mock_5_inner_rmd_x4_24_1" />
+    <child link="link_arm_part_10_2" />
+  </joint>
+  <link name="link_rmd_x4_24_mock_6_outer_rmd_x4_24_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_6_outer_rmd_x4_24_1.stl" />
+      </geometry>
+      <material name="link_rmd_x4_24_mock_6_outer_rmd_x4_24_1_material">
+        <color rgba="0.91764706 0.91764706 0.91764706 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_6_outer_rmd_x4_24_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.23995036" />
+      <inertia ixx="0.00010773939" iyy="0.00010552777" izz="0.0001024819" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="-0.0245 0 -0.030478263" rpy="0 0 3.1415927" />
+    </inertial>
+  </link>
+  <joint name="joint_fastened_18" type="fixed">
+    <origin xyz="0.0064638465 0.0064515687 -0.024" rpy="3.1415927 -1.5707963 0" />
+    <parent link="link_arm_part_10_2" />
+    <child link="link_rmd_x4_24_mock_6_outer_rmd_x4_24_1" />
+  </joint>
+  <link name="link_rmd_x4_24_mock_6_inner_rmd_x4_24_1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_6_inner_rmd_x4_24_1.stl" />
+      </geometry>
+      <material name="link_rmd_x4_24_mock_6_inner_rmd_x4_24_1_material">
+        <color rgba="0.76862745 0.88627451 0.95294118 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="./meshes/rmd_x4_24_mock_6_inner_rmd_x4_24_1.stl" />
+      </geometry>
+    </collision> -->
+    <inertial>
+      <mass value="0.14016004" />
+      <inertia ixx="1.7993604e-05" iyy="1.7993604e-05" izz="2.1433066e-05" ixy="0" ixz="0" iyz="0" />
+      <origin xyz="0 0 -0.012407025" rpy="3.1415927 0 0" />
+    </inertial>
+  </link>
+  <joint name="joint_rmd_x4_24_mock_6_dof_x4" type="revolute">
+    <origin xyz="-0.0245 0 -0.02" rpy="3.1415927 0 0" />
+    <parent link="link_rmd_x4_24_mock_6_outer_rmd_x4_24_1" />
+    <child link="link_rmd_x4_24_mock_6_inner_rmd_x4_24_1" />
+    <limit effort="1.5" velocity="5" lower="-3.1415927" upper="3.1415927" />
+    <axis xyz="0 0 -1" />
+  </joint>
+</robot>
