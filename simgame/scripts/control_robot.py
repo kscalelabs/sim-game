@@ -2,6 +2,9 @@
 
 import argparse
 import logging
+import sys
+import termios
+import tty
 
 import gymnasium as gym
 import numpy as np
@@ -65,6 +68,17 @@ def parse_args() -> argparse.Namespace:
     return args
 
 
+def get_keypress() -> str:
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+    try:
+        tty.setraw(sys.stdin.fileno())
+        key = sys.stdin.read(1)
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    return key
+
+
 def main() -> None:
     np.set_printoptions(suppress=True, precision=3)
 
@@ -107,15 +121,40 @@ def main() -> None:
     # action_2 = np.array([-0.912, -0.639, 0.124, 0.55, 0.693, 1.0], dtype=np.float32)
     # action_1_flag = False
 
-    while True:
-        action = env.action_space.sample()
+    if (action_space_size := env.action_space.shape) is None:
+        raise ValueError("The action space size is not defined.")
 
-        # Oscillates between two actions.
-        # action, action_1_flag = action_1 if action_1_flag else action_2, not action_1_flag
-        # action = action_1
+    key_to_action = [
+        ("q", "a"),
+        ("w", "s"),
+        ("e", "d"),
+        ("r", "f"),
+        ("t", "g"),
+        ("y", "h"),
+        ("u", "j"),
+        ("i", "k"),
+        ("o", "l"),
+        ("p", ";"),
+    ]
+
+    if len(action_space_size) > len(key_to_action):
+        raise ValueError("Too many actions to map to keys.")
+
+    while True:
+        key = get_keypress()
+        # Gets the action array based on the keyboard inpts.
+        action = np.zeros(action_space_size)
+        if key != -1:
+            for i in range(len(action)):
+                left_key, right_key = key_to_action[i]
+                if key == left_key:
+                    action[i] = 1
+                elif key == right_key:
+                    action[i] = -1
 
         obs, reward, terminated, truncated, info = env.step(action)
 
+        logger.debug("Action Taken: %s", action)
         logger.debug("Reward: %s", reward)
         logger.debug("Observation: %s", obs)
         logger.debug("Terminated: %s", terminated)
@@ -127,7 +166,6 @@ def main() -> None:
         if args.render_mode is None or args.render_mode != "human":
             if terminated or truncated:
                 break
-
     env.close()
 
     if record_dir is not None:
