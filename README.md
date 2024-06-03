@@ -1,5 +1,7 @@
 # sim-game
 
+TEST
+
 This is a simplified implementation of controlling the Stompy arm in ManiSkill, for debugging issues with the model.
 
 ## Getting Started
