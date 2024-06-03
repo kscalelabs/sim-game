@@ -6,6 +6,7 @@ import sys
 import termios
 import tty
 
+import tkinter as tk
 import gymnasium as gym
 import numpy as np
 from mani_skill.utils.wrappers import RecordEpisode
@@ -79,6 +80,17 @@ def get_keypress() -> str:
     return key
 
 
+def get_key(root: any) -> str:
+    key_pressed = []
+
+    def on_key_press(event: any) -> None:
+        key_pressed.append(event.keysym)
+        root.quit()  # Close the tkinter main loop
+
+    root.bind("<KeyPress>", on_key_press)
+    root.mainloop()
+
+
 def main() -> None:
     np.set_printoptions(suppress=True, precision=3)
 
@@ -140,8 +152,12 @@ def main() -> None:
     if len(action_space_size) > len(key_to_action):
         raise ValueError("Too many actions to map to keys.")
 
+    root = tk.Tk()
+    root.withdraw()
+
     while True:
-        key = get_keypress()
+        # key = get_keypress()
+        key = get_key(root)
         # Gets the action array based on the keyboard inpts.
         action = np.zeros(action_space_size)
         if key != -1:
